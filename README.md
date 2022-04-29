@@ -30,5 +30,10 @@ This project has been developed like a microservice architecture but just includ
   ![image](https://user-images.githubusercontent.com/38660944/165914455-6cf95f96-6ee0-494a-a7a3-4f752d22e5d3.png)
   
   We have just one API and it calculate the tariff annual costs.
+  
+  End of test do not forget to down it with below command.
+  ```sh
+  docker-compose down
+  ```
 
 
