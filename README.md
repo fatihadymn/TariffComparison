@@ -1,5 +1,5 @@
-# Exchange
-This project has been developed like a microservice architecture but just include one service for now. The project needs PostgreSQL and .Net 5.0. But don't worry about installment steps, there is no necessary to install all parts of these. This project needs only one requirement which is [Docker Desktop](https://www.docker.com/products/docker-desktop).
+# TariffComparison
+This project has been developed like a microservice architecture but just include one service for now. The project needs PostgreSQL and .Net 5.0 but don't worry about installment steps, there is no necessary to install all parts of these. This project needs only one requirement which is [Docker Desktop](https://www.docker.com/products/docker-desktop).
 
 ## Tech
 - .Net 5.0
@@ -9,7 +9,7 @@ This project has been developed like a microservice architecture but just includ
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 - First of all we need to go `docker-compose.yml` 's path on our console.
 
-     ![image](https://user-images.githubusercontent.com/38660944/153429140-2a93897b-b711-4b3b-9c5b-62eab8c613ee.png)
+     ![image](https://user-images.githubusercontent.com/38660944/165913810-643f802c-f64a-4bdf-9da2-b0eb6a544451.png)
      
 - We can start build and install parts,  to do that we just write below command.
   ```sh
@@ -17,18 +17,23 @@ This project has been developed like a microservice architecture but just includ
   ```
 - This build time can take some time to install some images as I said, just wait until see below picture.
 
-     ![image](https://user-images.githubusercontent.com/38660944/153429324-118125b7-196f-4b82-90a3-e313dacab4be.png)
+     ![image](https://user-images.githubusercontent.com/38660944/165913928-0ff37524-3d15-4fa4-a077-4b9ab29b053e.png)
 
-- This step provides everything what we need for our system. When containers go up, Some seed datas will add simultaneously like products.
+- This step provides everything what we need for our system. When containers go up, Some seed datas will add simultaneously like basic tariff and packaged tariff.
 
 ## About
-- [PostgreSQL DB](http://localhost:26002) is running on   `localhost:26002`
-- [PgAdmin for PostgreSQL](http://localhost:26003/) is running on `localhost:26003` with `username:admin@packaging` `password:admin`
-- [Packaging](http://localhost:26101/swagger) is running on `localhost:26101`
+- [PostgreSQL DB](http://localhost:56002) is running on   `localhost:56002`
+- [PgAdmin for PostgreSQL](http://localhost:56003/) is running on `localhost:56003` with `username:admin@tariffcomparison` `password:admin`
+- [TariffComparison](http://localhost:56101/swagger) is running on `localhost:56101`
 
-## Test
-  ![image](https://user-images.githubusercontent.com/38660944/153429737-1707d7b8-7c1b-4b8f-821b-ae8ad1d54630.png)  
+## Test  
+  ![image](https://user-images.githubusercontent.com/38660944/165914455-6cf95f96-6ee0-494a-a7a3-4f752d22e5d3.png)
   
-  All of these API's can provide what we will need to do some tests.
+  We have just one API and it calculate the tariff annual costs.
+  
+  End of test do not forget to down it with below command.
+  ```sh
+  docker-compose down
+  ```
 
 
