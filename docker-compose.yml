@@ -1,0 +1,59 @@
+version: "3.5"
+
+services:
+
+##56002 - db
+  postgresdb:
+    image: postgres:12
+    ports:
+      - "56002:5432"
+    restart: always
+    volumes:
+      - db_volume:/var/lib/postgres/data
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      POSTGRES_DB: "tariffcomparison"
+    container_name: db
+    networks: 
+      - tariffcomparison
+
+##56003 - db-pgadmin
+  dbpgadmin:
+    image: dpage/pgadmin4:4.15
+    ports:
+      - "56003:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@tariffcomparison"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    container_name: pgadmin
+    volumes:
+      - pg_volume:/var/lib/pgadmin
+    networks: 
+      - tariffcomparison
+
+##56101 - tariffcomparison
+  tariffcomparison:
+    image: tariffcomparison/tariffcomparison
+    build:
+      context: ./../tariffcomparison
+      dockerfile: ./Dockerfile
+    container_name: tariffcomparison
+    ports:
+      - '56101:5000'
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    networks:
+      - tariffcomparison
+    depends_on:
+      - postgresdb
+    restart: 
+      on-failure
+
+networks:
+  tariffcomparison:
+    name: tariffcomparison-network
+
+volumes:
+  db_volume:
+  pg_volume:
